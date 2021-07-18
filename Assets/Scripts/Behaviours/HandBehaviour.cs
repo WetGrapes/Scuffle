@@ -28,7 +28,7 @@ public class HandBehaviour : MonoBehaviour
     {
         if(!HasPlace) return false;
         await MoveUtility.Move(card.transform, card.transform.position,
-            transform.position - new Vector3(0, 0, -5.5f), CancellationToken.None, speed);
+            transform.position, CancellationToken.None, speed);
         card.transform.SetParent(transform);
         Cards.Add(card);
         moveHasTaken = false;

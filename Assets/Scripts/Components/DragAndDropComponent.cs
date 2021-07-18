@@ -73,7 +73,13 @@ public class DragAndDropComponent : SerializedMonoBehaviour
         {
             await MoveUtility.Move(transform, transform.position, 
                 targets[j].position, CancellationToken.None, autopilotSpeed);
-            handler.Interaction(transform, targets[j]);
+            var b = handler.Interaction(transform, targets[j]);
+            
+            if (b) return;
+            
+            await MoveUtility.Move(transform, transform.position, 
+                startPos, CancellationToken.None, autopilotSpeed);
+            collider.enabled = true;
         }
         else
         {

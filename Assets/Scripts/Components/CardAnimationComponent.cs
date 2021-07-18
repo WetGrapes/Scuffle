@@ -64,4 +64,5 @@ public class CardAnimationComponent : MonoBehaviour
         tokenSource = new CancellationTokenSource();
         MoveUtility.Move(transform, StartPos + shift, StartPos,  tokenSource.Token, speed);
     }
+    
 }

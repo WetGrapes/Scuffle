@@ -33,7 +33,7 @@ public class DeckBehaviour : MonoBehaviour
         if (!result)
         {
             await MoveUtility.Move(go.transform, go.transform.position, 
-                Trash.transform.position - new Vector3(0, 0, 5.5f), CancellationToken.None, DeckSpeed);
+                Trash.transform.position , CancellationToken.None, DeckSpeed);
             go.SetActive(false);
         }
         
@@ -44,7 +44,7 @@ public class DeckBehaviour : MonoBehaviour
         if (!result)
         {
             await MoveUtility.Move(go.transform, go.transform.position, 
-                Trash.transform.position - new Vector3(0, 0, 5.5f), CancellationToken.None, DeckSpeed);
+                Trash.transform.position , CancellationToken.None, DeckSpeed);
             go.SetActive(false);
         }
         

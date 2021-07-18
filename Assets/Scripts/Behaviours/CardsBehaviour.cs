@@ -51,6 +51,8 @@ public class CardsBehaviour : MonoBehaviour
     {
         handBehaviour.RemoveFromHand(this, area);
     }
+
+    public bool HandBlocked => handBehaviour.MoveHasTaken;
     
     public void Init(int power, Side side, HandBehaviour handBehaviour = null)
     {

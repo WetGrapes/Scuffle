@@ -6,5 +6,5 @@ using UnityEngine;
 [Serializable]
 public abstract class BaseHandler
 {
-    public abstract void Interaction(Transform caller, Transform callee);
+    public abstract bool Interaction(Transform caller, Transform callee);
 }
