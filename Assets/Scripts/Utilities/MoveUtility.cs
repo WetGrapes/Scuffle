@@ -6,6 +6,20 @@ using UnityEngine;
 
 public static class MoveUtility 
 {
+    public static async UniTask<bool> Rotate(Transform whom, Quaternion from, Quaternion to, CancellationToken token = default,
+        float speed = 5)
+    {
+        await UniTask.WaitWhile(() => token.IsCancellationRequested);
+        for (float i = 0; i <= 3; i += Time.deltaTime*speed)
+        {
+            if (token.IsCancellationRequested) return false;
+            await UniTask.Yield();
+            whom.rotation = Quaternion.Lerp(from, to, i/3);
+        }
+        whom.rotation = to;
+        return true;
+    }
+
     public static async UniTask<bool> Move(Transform whom, Vector3 from, Vector3 to, CancellationToken token = default,
         float speed = 5, bool simple = true)
     {
@@ -17,11 +31,11 @@ public static class MoveUtility
     private static async UniTask<bool> SimpleMove(Transform whom, Vector3 @from, Vector3 to,
         float speed, CancellationToken token = default)
     {
-        for (float i = 0; i <= 1; i += Time.deltaTime*speed)
+        for (float i = 0; i <= 3; i += Time.deltaTime*speed)
         {
             if (token.IsCancellationRequested) return false;
             await UniTask.Yield();
-            whom.position = Vector3.Lerp(from, to, i);
+            whom.position = Vector3.Lerp(from, to, i/3);
         }
         whom.position = to;
         return true;

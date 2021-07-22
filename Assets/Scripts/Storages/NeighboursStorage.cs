@@ -5,62 +5,60 @@ using UnityEngine;
 public class NeighboursStorage 
 {
    
-    public enum PositionInSpace
+    public enum Position
     {
-        Centre = 1,
-        CentreLeft = 2,
-        CentreRight = 3,
-        BottomLeft = 4,
-        BottomRight = 5,
-        TopLeft = 6,
-        TopRight = 7
+        UL = 1,
+        UC = 2,
+        UR = 3,
+        C = 4,
+        BL = 5,
+        BC = 6,
+        BR = 7
     };
 
-    public static Dictionary<PositionInSpace, List<PositionInSpace>> NeighboringAreas =
-        new Dictionary<PositionInSpace, List<PositionInSpace>>
+    public static Dictionary<Position, List<Position>> NeighboringAreas =
+        new Dictionary<Position, List<Position>>
         {
             {
-                PositionInSpace.Centre, new List<PositionInSpace>
+                Position.UL, new List<Position>
                 {
-                    PositionInSpace.CentreLeft, PositionInSpace.CentreRight,
+                    Position.UR,
                 }
             },
             {
-                PositionInSpace.CentreLeft, new List<PositionInSpace>
+                Position.UC, new List<Position>
                 {
-                    PositionInSpace.Centre, PositionInSpace.BottomLeft,
-                    PositionInSpace.CentreRight, PositionInSpace.TopLeft
+                    Position.UL, Position.UR, Position.C,
                 }
             },
             {
-                PositionInSpace.CentreRight, new List<PositionInSpace>
+                Position.UR, new List<Position>
                 {
-                    PositionInSpace.Centre, PositionInSpace.BottomRight,
-                    PositionInSpace.CentreLeft, PositionInSpace.TopRight
+                    Position.UC, 
                 }
             },
             {
-                PositionInSpace.TopLeft, new List<PositionInSpace>
+                Position.C, new List<Position>
                 {
-                    PositionInSpace.BottomLeft, PositionInSpace.CentreLeft
+                    Position.UC, Position.BC
                 }
             },
             {
-                PositionInSpace.TopRight, new List<PositionInSpace>
+                Position.BL, new List<Position>
                 {
-                    PositionInSpace.BottomRight, PositionInSpace.CentreRight
+                    Position.BC, 
                 }
             },
             {
-                PositionInSpace.BottomRight, new List<PositionInSpace>
+                Position.BC, new List<Position>
                 {
-                    PositionInSpace.TopRight, PositionInSpace.CentreRight
+                    Position.BL, Position.BR
                 }
             },
             {
-                PositionInSpace.BottomLeft, new List<PositionInSpace>
+                Position.BR, new List<Position>
                 {
-                    PositionInSpace.TopLeft, PositionInSpace.CentreLeft
+                    Position.BC, 
                 }
             }
         };

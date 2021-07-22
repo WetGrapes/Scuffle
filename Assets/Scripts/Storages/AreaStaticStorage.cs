@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class AreaStaticStorage : IStaticStorage
 {
     public static event Action<AreaBehaviour> NotifySetArea;
-    public static event Action<NeighboursStorage.PositionInSpace> NotifyFindNeighbours;
+    public static event Action<NeighboursStorage.Position> NotifyFindNeighbours;
     public static event Action NotifySetNullArea;
     
     private static bool active;
@@ -28,7 +28,7 @@ public class AreaStaticStorage : IStaticStorage
         else NotifySetArea?.Invoke(val);
     }
 
-    public static void ReferringToNeighbours(NeighboursStorage.PositionInSpace position)
+    public static void ReferringToNeighbours(NeighboursStorage.Position position)
     {
         if(!active) return;
         NotifyFindNeighbours?.Invoke(position);

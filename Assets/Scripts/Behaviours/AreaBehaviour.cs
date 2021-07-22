@@ -8,7 +8,8 @@ public class AreaBehaviour : MonoBehaviour
     public enum Importance
     {
         small = 1,
-        large = 2
+        medium = 2,
+        large = 3
     };
     [Serializable]
     public struct AreaInfo
@@ -16,7 +17,7 @@ public class AreaBehaviour : MonoBehaviour
         [ReadOnly] public int PowerRed, PowerBlue, Power;
         [ReadOnly] public CardsBehaviour.Side Owner;
         [Header("Важность района"), HideLabel] public Importance Importance;
-        [Header("Позиция района"), HideLabel] public NeighboursStorage.PositionInSpace PositionInSpace;
+        [Header("Позиция района"), HideLabel] public NeighboursStorage.Position Position;
     }
     #endregion
 
@@ -51,7 +52,7 @@ public class AreaBehaviour : MonoBehaviour
         _vector3 = transform.localScale;
     }
 
-    public bool PositionsEqual(NeighboursStorage.PositionInSpace val) => area.PositionInSpace == val;
+    public bool PositionsEqual(NeighboursStorage.Position val) => area.Position == val;
     public void ChangePower(int power, CardsBehaviour.Side side)
     {
         if (side == CardsBehaviour.Side.Red) area.PowerRed += power;
@@ -85,7 +86,7 @@ public class AreaBehaviour : MonoBehaviour
    
     public void OnMouseDown()
     {
-        AreaStaticStorage.ReferringToNeighbours(area.PositionInSpace);
+        AreaStaticStorage.ReferringToNeighbours(area.Position);
     }
     public void OnMouseUp()
     {

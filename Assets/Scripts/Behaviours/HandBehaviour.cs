@@ -24,9 +24,15 @@ public class HandBehaviour : MonoBehaviour
     }
 
     public bool MoveHasTaken => moveHasTaken;
-    public async UniTask<bool> AddCardToHand(CardsBehaviour card, float speed)
+    public async UniTask<bool> AddCardToHand(CardsBehaviour card, Vector3 offset, float speed)
     {
         if(!HasPlace) return false;
+        await MoveUtility.Move(card.transform, card.transform.position,
+            card.transform.position+new Vector3(offset.x,0,0), CancellationToken.None,10);
+        await MoveUtility.Move(card.transform, card.transform.position,
+            card.transform.position+new Vector3(0, offset.y,0), CancellationToken.None,20);
+        MoveUtility.Rotate(card.transform, card.transform.rotation, transform.rotation, 
+            CancellationToken.None, speed);
         await MoveUtility.Move(card.transform, card.transform.position,
             transform.position, CancellationToken.None, speed);
         card.transform.SetParent(transform);

@@ -27,7 +27,7 @@ public class CanvasInfoBehaviour : MonoBehaviour
         Owner.text = info.Owner.ToString();
         Power.text = info.Power.ToString();
         Size.text = info.Importance.ToString();
-        Position.text = info.PositionInSpace.ToString();
+        Position.text = info.Position.ToString();
     }
 
     private void UnsetArea()

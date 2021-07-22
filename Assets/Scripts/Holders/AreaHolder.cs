@@ -11,7 +11,7 @@ public class AreaHolder : MonoBehaviour
     [ShowInInspector] private List<AreaBehaviour> ChildesAreaBehaviours;
     [ShowInInspector] private AreaBehaviour SelectedArea;
 
-    private NeighboursStorage.PositionInSpace? previousSpace;
+    private NeighboursStorage.Position? previousSpace;
     private readonly Color empty = new Color(0, 0, 0, 0);
 
     void Awake()
@@ -23,7 +23,7 @@ public class AreaHolder : MonoBehaviour
     }
 
 
-    private void FindNeighbors(NeighboursStorage.PositionInSpace MyPosition)
+    private void FindNeighbors(NeighboursStorage.Position MyPosition)
     {
         if (MyPosition != previousSpace)
         {
